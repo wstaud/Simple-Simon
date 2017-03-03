@@ -1,0 +1,105 @@
+@font-face {
+    font-family: starTrek;
+    src: url('/resources/st.ttf');
+}
+html {
+    background: black;
+    font-family: 'starTrek';
+}
+
+.container {
+    width: 1200px;
+    height: 800px;
+    margin: 0 auto;
+}
+
+.realitive {
+    position: relative;
+}
+
+
+.purple {
+    background: #9999CC;
+    
+}
+
+.mustard {
+    background: #FFCC99;
+}
+
+
+
+#topLeftBox {
+    width: 150px;
+    height: 120px;
+}
+
+#topLeftHook {
+    width: 518px;
+    position: relative;
+    left: -2px;
+    margin-top: 3px;
+}
+
+#midHook {
+    width: 518px;
+    position: relative;
+    left: -1px;
+
+}
+
+#midLeftBox {
+    width: 150px;
+    height: 180px;    
+}
+
+#midLeftBoxSm {
+    margin-top: 5px;
+    width: 150px;
+    height: 50px;
+}
+
+#botLeftBox {
+    margin-top: 5px;
+    width: 150px;
+    height: 210px;    
+}
+
+
+/* LCARS Text styling */
+#topLeftBoxText {
+    position: absolute;
+    right: 10px;
+    font-size: 25px;
+    bottom: 2px;
+}
+#topLeftHookText{
+    position: absolute;
+    top: 8px;
+    font-size: 25px;
+    right: 1062px;
+}
+#midHookText {
+    position: absolute;
+    bottom: 8px;
+    font-size: 25px;
+    right: 378px;
+}
+#midLeftText {
+    position: absolute;
+    right: 10px;
+    font-size: 25px;
+    bottom: 2px;
+}
+#midLeftBoxSmText {
+    position: absolute;
+    right: 10px;
+    font-size: 25px;
+    bottom: 10px;
+}
+#botLeftBoxText {
+    position: absolute;
+    right: 10px;
+    font-size: 25px;
+    top: 4px;
+}
