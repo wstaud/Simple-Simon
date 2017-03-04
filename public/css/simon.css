@@ -2,10 +2,16 @@
     font-family: starTrek;
     src: url('/resources/st.ttf');
 }
+@font-face {
+    font-family: starTrekBold;
+    src: url('/resources/stBold.ttf');
+}
+
 html {
     background: black;
     font-family: 'starTrek';
 }
+
 
 .container {
     width: 1200px;
@@ -19,7 +25,7 @@ html {
 
 
 .purple {
-    background: #9999CC;
+    background: #9999FF;
     
 }
 
@@ -27,11 +33,49 @@ html {
     background: #FFCC99;
 }
 
+.pink {
+    background: #CC99CC;
+}
+
+.brown {
+    background: #FF9966;
+}
+
+.dataOutput {
+    width: 1059px;
+    color: #9999CC;
+    position: absolute;
+    left: 211px;
+    top: 76px;
+    font-size: 19px;
+    text-align: right;
+    border-spacing: 0px;
+
+}
+
+#data {
+    position: relative;
+}
+
+/* LCARS Title */
+
+#shieldTitle {
+    color: #9999CC;
+    position: absolute;
+    right: -76px;
+    top: -9px;
+    font-size: 80px;
+    margin: 0;
+    opacity: 0;42
+}
 
 
+
+/* Layout Styling */
 #topLeftBox {
     width: 150px;
     height: 120px;
+    opacity: 0;
 }
 
 #topLeftHook {
@@ -39,31 +83,110 @@ html {
     position: relative;
     left: -2px;
     margin-top: 3px;
+    opacity: 0;
 }
 
 #midHook {
     width: 518px;
     position: relative;
     left: -1px;
+    opacity: 0;
 
 }
 
 #midLeftBox {
     width: 150px;
-    height: 180px;    
+    height: 180px;   
+    opacity: 0; 
 }
 
 #midLeftBoxSm {
     margin-top: 5px;
     width: 150px;
     height: 50px;
+    opacity: 0;
 }
 
 #botLeftBox {
     margin-top: 5px;
     width: 150px;
-    height: 210px;    
+    height: 210px;   
+    opacity: 0; 
 }
+
+#leftHookMiniBox {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    left: 520px;
+    bottom: 5px;
+    opacity: 0;
+}
+
+#midHookMiniBox {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    left: 520px;
+    top: 3px;
+    opacity: 0;
+}
+
+#topShortBox {
+    position: absolute;
+    width: 170px;
+    height: 20px;
+    left: 555px;
+    bottom: 5px;
+    opacity: 0;
+
+}
+#topLongBox {
+    position: absolute;
+    width: 490px;
+    height: 20px;
+    left: 730px;
+    bottom: 5px;
+    opacity: 0;
+
+}
+#topFinalBox {
+    position: absolute;
+    width: 44px;
+    height: 20px;
+    left: 1225px;
+    bottom: 5px;
+    opacity: 0;
+
+}
+#thinBox {
+    position: absolute;
+    width: 170px;
+    height: 9px;
+    left: 555px;
+    top: 3px;   
+    opacity: 0; 
+
+}
+#botLongBox {
+    position: absolute;
+    width: 490px;
+    height: 20px;
+    left: 730px;
+    top: 3px;
+    opacity: 0;
+
+}
+#botFinalBox {
+    position: absolute;
+    width: 44px;
+    height: 20px;
+    top: 3px;
+    left: 1225px;
+    opacity: 0; 
+
+}
+
 
 
 /* LCARS Text styling */
@@ -103,3 +226,44 @@ html {
     font-size: 25px;
     top: 4px;
 }
+
+/* Data Output IDs*/
+
+#firstLine {
+    top: 88px;
+    opacity: 0;
+}
+#secondLine {
+    top: 107px;
+    opacity: 0;
+}
+#thirdLine {
+    top: 126px;
+    opacity: 0;
+}
+#fourthLine {
+    top: 145px;
+    opacity: 0;
+}
+#fifthLine {
+    top: 165px;
+    opacity: 0;
+}
+#sixthLine {
+    top: 185px;
+    opacity: 0;
+}
+#seventhLine {
+    top: 205px;
+    opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+
