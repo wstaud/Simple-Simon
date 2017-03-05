@@ -71,7 +71,7 @@ var topLeftHookClass = $(".topLeftHook");
 
 
 // =======================GAME LOGIC========================
-var quadrantArray = [2,1,3,4,4,2];
+var quadrantArray = [];
 function game() {
     nextRound();
     animateShieldLoop();
@@ -84,38 +84,36 @@ function nextRound() {
 }
 var i = 0;
 function animateShieldLoop() {
-    console.log("fuck you");
     animateShield();
     setTimeout(function() {
         i += 1;
 
         if (i <= quadrantArray.length) {
             animateShieldLoop();
-            if (i == quadrantArray.length) {
-
-            }
         }
     }, 700);
 }
 function animateShield() {
-    computerDamage.play();
+    
     if (quadrantArray[i] == 1) {
+        alert.play();
         indicatorTopDisplay();
         console.log("1");
     }else if (quadrantArray[i] == 2) {
+        alert.play();
         console.log("SHIELDS");
         indicatorRightDisplay();
         console.log("2");
     }else if (quadrantArray[i] == 3) {
+        alert.play();
         indicatorBottomDisplay();
         console.log("3");
     }else if (quadrantArray[i] == 4) {
+        alert.play();
         indicatorLeftDisplay();
         console.log("4");
     }
 }
-
-
 
 
 
