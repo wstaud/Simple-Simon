@@ -7,6 +7,7 @@ var computerScroll = new Audio("/sounds/computerScroll.mp3");
 var computerPowerup = new Audio("/sounds/computerPowerup.mp3");
 var computerPowerup2 = new Audio("/sounds/computerPowerup2.mp3");
 var computerDamage = new Audio("/sounds/computerDamage.mp3");
+var alert = new Audio("/sounds/alert.mp3");
 //Sound Volume
 computerDamage.volume = 0.1;
 
