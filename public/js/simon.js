@@ -72,9 +72,13 @@ var topLeftHookClass = $(".topLeftHook");
 
 // =======================GAME LOGIC========================
 var quadrantArray = [];
+var userInputArray = [];
+var userCount = 0;
 function game() {
     nextRound();
     animateShieldLoop();
+    usercount = 0;
+    userInputArray = [];
 }
 
 
@@ -101,7 +105,6 @@ function animateShield() {
         console.log("1");
     }else if (quadrantArray[i] == 2) {
         alert.play();
-        console.log("SHIELDS");
         indicatorRightDisplay();
         console.log("2");
     }else if (quadrantArray[i] == 3) {
@@ -114,6 +117,48 @@ function animateShield() {
         console.log("4");
     }
 }
+
+
+$(document).keyup(function(event){
+    var keycode = event.keyCode;
+
+    if (keycode == 38) {                //Up key
+        userInputArray.push(1);
+        checkInput();
+    }else if (keycode == 40) {          //Down Key
+        userInputArray.push(3);
+        checkInput();
+    }else if (keycode == 37) {          //Left Key
+        userInputArray.push(4);
+        checkInput();
+    }else if (keycode == 39) {          //Right Key
+        userInputArray.push(2);
+        checkInput();
+    }
+    console.log(userInputArray);
+});
+
+
+function checkInput() {
+    if (userInputArray[userCount] = quadrantArray[userCount]) {
+        console.log("Correct");
+        userCount += 1;
+        if (userCount == quadrantArray.length) {
+            console.log(userInputArray);
+            console.log("Redo");
+            game();
+        }
+    }else {
+        fail();
+    }
+
+    
+}
+
+function fail() {
+    console.log("fail");
+}
+
 
 
 
