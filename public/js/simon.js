@@ -65,64 +65,54 @@ var midHookClass = $(".midHook");
 var topLeftHookClass = $(".topLeftHook");
 
 
-readyYes.click(function(event) {
-    readyPrompt.css({
-        display: 'none'});
-    redAlert();
-    redAlertSoundRepeat();
-    setTimeout(function() { 
-        game();
-    }, 5000);
-});
-
-
-
-
-
 
 
 
 
 // =======================GAME LOGIC========================
-var quadrant = 0;
-
+var quadrantArray = [2,1,3,4,4,2];
 function game() {
-    var userCorrect = true;
-    var quadrantOutputArray = [];
-    var userInputArray = [];
-    while (userCorrect == true) {
-        quadrant = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
-        quadrantOutputArray.push(quadrant);
-        computerDamage.play();
-        console.log(quadrantOutputArray);
-        for (i = 0; i < quadrantOutputArray.length; i++) {
-            if (quadrantOutputArray[i] == 1) {
-                indicatorTopDisplay();
-            }else if (quadrantOutputArray[i] == 2) {
-                indicatorRightDisplay();
-            }else if (quadrantOutputArray[i] == 3) {
-                indicatorBottomDisplay();
-            }else if (quadrantOutputArray[i] == 4) {
-                indicatorLeftDisplay();
-            }
-
-            if (i == quadrantOutputArray.length - 1) {
-                var checkUser = setTimeout(function () {
-                    //failed
-                }, 3000);
-            }
-        }
-        
-        
-        userCorrect = false;
-    }
-
+    nextRound();
+    animateShieldLoop();
 }
 
 
+function nextRound() {
+    var quadrant = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+    quadrantArray.push(quadrant);
+}
+var i = 0;
+function animateShieldLoop() {
+    console.log("fuck you");
+    animateShield();
+    setTimeout(function() {
+        i += 1;
 
+        if (i <= quadrantArray.length) {
+            animateShieldLoop();
+            if (i == quadrantArray.length) {
 
-
+            }
+        }
+    }, 700);
+}
+function animateShield() {
+    computerDamage.play();
+    if (quadrantArray[i] == 1) {
+        indicatorTopDisplay();
+        console.log("1");
+    }else if (quadrantArray[i] == 2) {
+        console.log("SHIELDS");
+        indicatorRightDisplay();
+        console.log("2");
+    }else if (quadrantArray[i] == 3) {
+        indicatorBottomDisplay();
+        console.log("3");
+    }else if (quadrantArray[i] == 4) {
+        indicatorLeftDisplay();
+        console.log("4");
+    }
+}
 
 
 
@@ -243,45 +233,47 @@ function redAlert() {
 }
 
 
+
+// Indicator Lights
+
 function indicatorTopDisplay() {
-    console.log("top");
     indicatorTop.animate({
         opacity: '1'
-    },1000);
-    indicatorTop.delay(1000).animate({
+    },250);
+    indicatorTop.delay(250).animate({
         opacity: '0'
-    },1000);
+    },250);
 }
 
 
 function indicatorRightDisplay() {
-    console.log("right");
+   
     indicatorRight.animate({
         opacity: '1'
-    },1000);
-    indicatorRight.delay(1000).animate({
+    },250);
+    indicatorRight.delay(250).animate({
         opacity: '0'
-    },1000);
+    },250);
 }
 
 function indicatorBottomDisplay() {
-    console.log("bottom");
+    
     indicatorBottom.animate({
         opacity: '1'
-    },1000);
-    indicatorBottom.delay(1000).animate({
+    },250);
+    indicatorBottom.delay(250).animate({
         opacity: '0'
-    },1000);
+    },250);
 }
 
 function indicatorLeftDisplay() {
-    console.log("left");
+  
     indicatorLeft.animate({
         opacity: '1'
-    },1000);
-    indicatorLeft.delay(1000).animate({
+    },250);
+    indicatorLeft.delay(250).animate({
         opacity: '0'
-    },1000);
+    },250);
 }
 
 
@@ -425,6 +417,21 @@ function startupSounds() {
     voyagerBridge.volume = 0.3;
     computerActivate.play();
 }
+
+
+
+// ==================Listeners==================
+
+readyYes.click(function(event) {
+    readyPrompt.css({
+        display: 'none'});
+    redAlert();
+    redAlertSoundRepeat();
+    setTimeout(function() { 
+        game();
+    }, 5000);
+});
+
 
 
 //============On page Load=============
