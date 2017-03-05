@@ -53,7 +53,24 @@ html {
 
 }
 
+.readyButton {
+    margin-top: 60px;
+    border-radius: 15px;
+    font-family: 'starTrekBold';
+    font-size: 25px;
+    color: white;
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px; 
+}
+
 #data {
+    position: relative;
+    height: 268px;
+    width: 1200px;
+}
+
+#game {
     position: relative;
 }
 
@@ -66,7 +83,7 @@ html {
     top: -9px;
     font-size: 80px;
     margin: 0;
-    opacity: 0;42
+    opacity: 0;
 }
 
 
@@ -78,7 +95,9 @@ html {
     opacity: 0;
 }
 
-#topLeftHook {
+
+/* Hooks Below */
+.topLeftHook {
     width: 518px;
     position: relative;
     left: -2px;
@@ -86,14 +105,34 @@ html {
     opacity: 0;
 }
 
-#midHook {
+#topLeftHook {
+   display: inline; 
+}
+#topLeftHookRed {
+    display: none;
+}
+#topLeftHookWhite {
+    display: none;
+}
+.midHook {
     width: 518px;
     position: relative;
     left: -1px;
     opacity: 0;
+}
+#midHook {
+    display: block;
+}
+
+#midHookRed {
+    display: none;
+}
+#midHookWhite {
+    display: none;
 
 }
 
+/* End Hooks */
 #midLeftBox {
     width: 150px;
     height: 180px;   
@@ -206,7 +245,7 @@ html {
     position: absolute;
     bottom: 8px;
     font-size: 25px;
-    right: 378px;
+    left: 70px;
 }
 #midLeftText {
     position: absolute;
@@ -257,6 +296,98 @@ html {
     top: 205px;
     opacity: 0;
 }
+
+/* Voyager/Game Shields and Ship */
+#voyager {
+    position: absolute;
+    width: 500px;
+    left: 540px;
+    top: 190px;
+    opacity: 0;
+}
+/*Shields*/
+#voyagerShields {
+    position: absolute;
+    width: 750px;
+    left: 380px;
+    top: 100px;
+    opacity: 0;
+}
+/*Damage Indicators*/
+#indicatorTop {
+    position: absolute;
+    width: 750px;
+    left: 375px;
+    top: 50px;
+    opacity: 0;
+}
+
+#indicatorBottom {
+    position: absolute;
+    width: 750px;
+    left: 375px;
+    top: 420px;
+    opacity: 0;
+}
+
+#indicatorLeft {
+    position: absolute;
+    height: 240px;
+    left: 336px;
+    top: 190px;
+    opacity: 0;
+}
+
+#indicatorRight {
+    position: absolute;
+    height: 240px;
+    left: 1095px;
+    top: 190px;
+    opacity: 0;
+}
+
+/*Prompt User Ready Styling*/
+
+#promptReady {
+    background: black;
+    width: 400px;
+    height: 200px;
+    border: 10px solid #FFCC99;
+    border-radius: 15px;
+    position: absolute;
+    z-index: 100;
+    top: 25px;
+    left: 450px;
+    opacity: 0;
+    text-align: center;
+}
+
+#readyText {
+    color: #9999CC;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+#readyYes {
+    background: red;
+    border: 1px;
+    margin-right: 20px;
+}
+#readyNo {
+    background: #FFCC99;
+    border: 1px;
+    margin-left: 20px;
+}
+#readyYes:hover {
+    background: white;
+    color: black;
+}
+
+#readyNo:hover {
+    background: #FF9900; 
+}
+
+
 
 
 
