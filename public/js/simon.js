@@ -2,7 +2,7 @@ $(document).ready (function() {
     "use strict";
 
 
-var keyboardUnlocked = false;
+
 
 //    =========== Sound Variables ==============
 var voyagerBridge = new Audio("/sounds/voyagerBridge.mp3");
@@ -86,7 +86,7 @@ var midHookWhite = $("#midHookWhite");
 var midHookClass = $(".midHook");
 var topLeftHookClass = $(".topLeftHook");
 
-
+var incomingText = $("#incoming");
 
 // =============== Timeout variables ===============
 //declared as such to prevent automatic play
@@ -95,6 +95,7 @@ var redAlertTimeout;
 
 // ================ Booleans ==============
 var retry = false;
+var keyboardUnlocked = false;
 
 //=============   END Variables  ===============
 
@@ -322,6 +323,8 @@ function startup() {
         setTimeout(function() { 
             transmission();
         }, 8000);
+
+
     }
 }
 
@@ -331,6 +334,31 @@ function startup() {
 //Called upon only on the first playthrough
 function transmission() {
     incoming.play();
+    incomingText.css({
+        display: 'block'
+    });
+    incomingText.animate({
+        opacity: '1'
+    },1000);
+    incomingText.delay(500).animate({
+        opacity: '0'
+    },1000);
+    incomingText.delay(1000).animate({
+        opacity: '1'
+    },1000);
+    incomingText.delay(1500).animate({
+        opacity: '0'
+    },1000);
+    incomingText.delay(2000).animate({
+        opacity: '1'
+    },1000);
+    incomingText.delay(2500).animate({
+        opacity: '0'
+    },1000);
+    incomingText.css({
+        display: 'none'
+    });
+    
     setTimeout(function() { 
         borg.play();
     }, 2000);
