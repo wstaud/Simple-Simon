@@ -21,7 +21,6 @@ var incoming = new Audio("/sounds/incoming.mp3");
 computerDamage.volume = 0.1;
 incoming.volume = 0.5;
 
-
 // ============HTML Variables=================
 var container = $(".container");
 //DATA DIV
@@ -80,18 +79,7 @@ var topLeftHookClass = $(".topLeftHook");
 //declared as such to prevent automatic play
 var redAlertSoundTimeout;
 var redAlertTimeout;
-
-
-
 //=============   END Variables  ===============
-
-
-
-
-
-
-
-
 
 
 
@@ -102,16 +90,15 @@ var quadrantArray = [];
 var userInputArray = [];
 var userCount = 0;
 
-//Adds new number to quadrantArray
+//Adds new number to quadrantArray, resets user variables, calls animate shields
 function nextRound() {
     userCount = 0;
     userInputArray = [];
     var quadrant = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
     quadrantArray.push(quadrant);
-    console.log(quadrantArray);
     animateShieldLoop();
 }
-//Animates each of the shield indicators
+//Calls animateShieldLoop() to animate each of the shield indicators
 var i = 0;
 function animateShieldLoop() {
     animateShield();
@@ -125,7 +112,7 @@ function animateShieldLoop() {
         }
     }, 700);
 }
-//Calls on animations of shields
+//Animates shield indicators
 function animateShield() {
     
     if (quadrantArray[i] == 1) {
@@ -142,9 +129,7 @@ function animateShield() {
         indicatorLeftDisplay();
     }
 }
-
-
-//takes input of user and checks it
+//Takes user input and adds it to userInputArray, calls checkInput to verify
 $(document).keyup(function(event){
     var keycode = event.keyCode;
     if (keycode == 38) {                //Up key
@@ -161,13 +146,10 @@ $(document).keyup(function(event){
         checkInput();
     }
 });
-
-//checks user input
+//checks user input against generated sequence, calls next round if all is good or calls fail function otherwise
 function checkInput() {
-    console.log(userInputArray);
     if (userInputArray[userCount] == quadrantArray[userCount]) {
         userCount += 1;
-        console.log(userCount);
         if (userCount == quadrantArray.length) {
             nextRound();
         }
@@ -175,176 +157,10 @@ function checkInput() {
         fail();
     }
 }
-
+//Calls shutdown function. Will add more
 function fail() {
-    console.log("You Failed");
     shutdown();
 }
-
-
-
-
-
-
-// ========================== REACTIVE ANIMATIONS ========================
-var isFirst = false;
-function redAlert() {
-    //Set All Red
-    purple.css({background: 'red'});
-    mustard.css({background: 'red'});
-    pink.css({background: 'red'});
-    brown.css({background: 'red'});
-    topLeftHookClass.css({
-        opacity: '1'
-    });
-    midHookClass.css({
-        opacity: '1'
-    });
-    //Done like this to load all hook images at page load to prevent style clipping as color changes first sequence
-    midHook.hide();
-    midHookRed.show();
-    topLeftHook.hide();
-    topLeftHookRed.show();
-
-    //White Snake effect
-    setTimeout(function() { 
-        botLeftBox.css({background: 'white'});
-    }, 200);
-    setTimeout(function() { 
-        botLeftBox.css({background: 'red'});
-    }, 400);
-    setTimeout(function() { 
-        midLeftBoxSm.css({background: 'white'});
-    }, 400);
-    setTimeout(function() { 
-        midLeftBoxSm.css({background: 'red'});
-    }, 600);
-    setTimeout(function() { 
-        midLeftBox.css({background: 'white'});
-    }, 600);
-    setTimeout(function() { 
-        midLeftBox.css({background: 'red'});
-    }, 800);
-    setTimeout(function() { 
-        midHookRed.hide();
-        midHookWhite.show();
-    }, 800);
-    setTimeout(function() { 
-        midHookWhite.hide();
-        midHookRed.show();
-    }, 1000);
-    setTimeout(function() { 
-        midHookMiniBox.css({background: 'white'});
-    }, 1000);
-    setTimeout(function() { 
-        midHookMiniBox.css({background: 'red'});
-    }, 1200);
-    setTimeout(function() { 
-        thinBox.css({background: 'white'});
-    }, 1200);
-    setTimeout(function() { 
-        thinBox.css({background: 'red'});
-    }, 1400);
-    setTimeout(function() { 
-        botLongBox.css({background: 'white'});
-    }, 1400);
-    setTimeout(function() { 
-        botLongBox.css({background: 'red'});
-    }, 1600);
-    setTimeout(function() { 
-        botFinalBox.css({background: 'white'});
-    }, 1600);
-    setTimeout(function() { 
-        botFinalBox.css({background: 'red'});
-    }, 1800);
-
-    //TOP
-    setTimeout(function() { 
-        topLeftBox.css({background: 'white'});
-    }, 200);
-    setTimeout(function() { 
-        topLeftBox.css({background: 'red'});
-    }, 400);
-    setTimeout(function() { 
-        topLeftHookRed.hide();
-        topLeftHookWhite.show();
-    }, 400);
-     setTimeout(function() { 
-        topLeftHookWhite.hide();
-        topLeftHookRed.show();
-    }, 600);
-    setTimeout(function() { 
-        leftHookMiniBox.css({background: 'white'});
-    }, 600);
-    setTimeout(function() { 
-        leftHookMiniBox.css({background: 'red'});
-    }, 800);
-    setTimeout(function() { 
-        topShortBox.css({background: 'white'});
-    }, 800);
-    setTimeout(function() { 
-        topShortBox.css({background: 'red'});
-    }, 1000);
-    setTimeout(function() { 
-        topLongBox.css({background: 'white'});
-    }, 1000);
-    setTimeout(function() { 
-        topLongBox.css({background: 'red'});
-    }, 1200);
-    setTimeout(function() { 
-        topFinalBox.css({background: 'white'});
-    }, 1200);
-    setTimeout(function() { 
-        topFinalBox.css({background: 'red'}); 
-    }, 1400);
-    redAlertTimeout = setTimeout(redAlert, 2000);
-    redAlertTimeout;
-}
-
-
-
-// Indicator Lights
-
-function indicatorTopDisplay() {
-    indicatorTop.animate({
-        opacity: '1'
-    },250);
-    indicatorTop.delay(250).animate({
-        opacity: '0'
-    },250);
-}
-
-
-function indicatorRightDisplay() {
-   
-    indicatorRight.animate({
-        opacity: '1'
-    },250);
-    indicatorRight.delay(250).animate({
-        opacity: '0'
-    },250);
-}
-
-function indicatorBottomDisplay() {
-    
-    indicatorBottom.animate({
-        opacity: '1'
-    },250);
-    indicatorBottom.delay(250).animate({
-        opacity: '0'
-    },250);
-}
-
-function indicatorLeftDisplay() {
-  
-    indicatorLeft.animate({
-        opacity: '1'
-    },250);
-    indicatorLeft.delay(250).animate({
-        opacity: '0'
-    },250);
-}
-
 
 
 
@@ -464,10 +280,9 @@ function startup() {
     shields.delay(6000).animate({
         opacity: '1'
     },2000);
+    //END STARTUP Animation
 
-    //END STARTUP
     //Prompt Ready, launch effects and game on ready
-
     setTimeout(function() { 
         incoming.play();
     }, 8000);
@@ -483,6 +298,8 @@ function startup() {
 
 
 
+
+
 // ========================== SHUTDOWN Animation ============================
 function shutdown() {
     clearTimeout(redAlertSoundTimeout);
@@ -491,7 +308,7 @@ function shutdown() {
     shieldTitle.animate({
         opacity: '0'
     },2000);
-
+    //Text Line 
     firstLine.delay(1000).animate({
         opacity: '0'
     },200);
@@ -513,42 +330,42 @@ function shutdown() {
     seventhLine.delay(2200).animate({
         opacity: '0'
     },200);
-
+    //First
     botFinalBox.delay(2400).animate({
         opacity: '0'
     },500);
     topFinalBox.delay(2400).animate({
         opacity: '0'
     },500);
-
+    //Second
     topLongBox.delay(2900).animate({
         opacity: '0'
     },500);
     botLongBox.delay(2900).animate({
         opacity: '0'
     },500);
-
+    //Third
     topShortBox.delay(3400).animate({
         opacity: '0'
     },500);
     thinBox.delay(3400).animate({
         opacity: '0'
     },500);
-
+    //Fourth
     topShortBox.delay(3900).animate({
         opacity: '0'
     },500);
     thinBox.delay(3900).animate({
         opacity: '0'
     },500);
-
+    //Fifth
     leftHookMiniBox.delay(4400).animate({
         opacity: '0'
     },500);
     midHookMiniBox.delay(4400).animate({
         opacity: '0'
     },500);
-
+    //Sixth --Clear All Hooks
     midLeftBox.delay(4900).animate({
         opacity: '0'
     },500);
@@ -561,7 +378,7 @@ function shutdown() {
     midHookWhite.delay(4900).animate({
         opacity: '0'
     },500);
-
+    //Seventh --Clear All Hooks
     topLeftHook.delay(5400).animate({
         opacity: '0'
     },500);
@@ -571,28 +388,187 @@ function shutdown() {
     topLeftHookWhite.delay(5400).animate({
         opacity: '0'
     },500);
-
     midLeftBoxSm.delay(5400).animate({
         opacity: '0'
     },500);
-
+    //Eigth
     topLeftBox.delay(5900).animate({
         opacity: '0' 
     },500);
     botLeftBox.delay(5900).animate({
-        opacity: '0'
-        
+        opacity: '0' 
     },500);
-    
 }
 
 
 
 
 
+// ========================== REACTIVE ANIMATIONS ========================
+var isFirst = false;
+function redAlert() {
+    //Set All Red
+    purple.css({background: 'red'});
+    mustard.css({background: 'red'});
+    pink.css({background: 'red'});
+    brown.css({background: 'red'});
+    topLeftHookClass.css({
+        opacity: '1'
+    });
+    midHookClass.css({
+        opacity: '1'
+    });
+    //Done like this to load all hook images at page load to prevent style clipping as color changes first sequence
+    midHook.hide();
+    midHookRed.show();
+    topLeftHook.hide();
+    topLeftHookRed.show();
+
+    //White and Red Snake effect
+    setTimeout(function() { 
+        botLeftBox.css({background: 'white'});
+    }, 200);
+    setTimeout(function() { 
+        botLeftBox.css({background: 'red'});
+    }, 400);
+    setTimeout(function() { 
+        midLeftBoxSm.css({background: 'white'});
+    }, 400);
+    setTimeout(function() { 
+        midLeftBoxSm.css({background: 'red'});
+    }, 600);
+    setTimeout(function() { 
+        midLeftBox.css({background: 'white'});
+    }, 600);
+    setTimeout(function() { 
+        midLeftBox.css({background: 'red'});
+    }, 800);
+    setTimeout(function() { 
+        midHookRed.hide();
+        midHookWhite.show();
+    }, 800);
+    setTimeout(function() { 
+        midHookWhite.hide();
+        midHookRed.show();
+    }, 1000);
+    setTimeout(function() { 
+        midHookMiniBox.css({background: 'white'});
+    }, 1000);
+    setTimeout(function() { 
+        midHookMiniBox.css({background: 'red'});
+    }, 1200);
+    setTimeout(function() { 
+        thinBox.css({background: 'white'});
+    }, 1200);
+    setTimeout(function() { 
+        thinBox.css({background: 'red'});
+    }, 1400);
+    setTimeout(function() { 
+        botLongBox.css({background: 'white'});
+    }, 1400);
+    setTimeout(function() { 
+        botLongBox.css({background: 'red'});
+    }, 1600);
+    setTimeout(function() { 
+        botFinalBox.css({background: 'white'});
+    }, 1600);
+    setTimeout(function() { 
+        botFinalBox.css({background: 'red'});
+    }, 1800);
+
+    //TOP
+    setTimeout(function() { 
+        topLeftBox.css({background: 'white'});
+    }, 200);
+    setTimeout(function() { 
+        topLeftBox.css({background: 'red'});
+    }, 400);
+    setTimeout(function() { 
+        topLeftHookRed.hide();
+        topLeftHookWhite.show();
+    }, 400);
+     setTimeout(function() { 
+        topLeftHookWhite.hide();
+        topLeftHookRed.show();
+    }, 600);
+    setTimeout(function() { 
+        leftHookMiniBox.css({background: 'white'});
+    }, 600);
+    setTimeout(function() { 
+        leftHookMiniBox.css({background: 'red'});
+    }, 800);
+    setTimeout(function() { 
+        topShortBox.css({background: 'white'});
+    }, 800);
+    setTimeout(function() { 
+        topShortBox.css({background: 'red'});
+    }, 1000);
+    setTimeout(function() { 
+        topLongBox.css({background: 'white'});
+    }, 1000);
+    setTimeout(function() { 
+        topLongBox.css({background: 'red'});
+    }, 1200);
+    setTimeout(function() { 
+        topFinalBox.css({background: 'white'});
+    }, 1200);
+    setTimeout(function() { 
+        topFinalBox.css({background: 'red'}); 
+    }, 1400);
+    redAlertTimeout = setTimeout(redAlert, 2000);
+    redAlertTimeout; //Call Global timeout to allow kill on shutdown
+}
+
+
+
+
+
+//Indicator Lights
+
+function indicatorTopDisplay() {
+    indicatorTop.animate({
+        opacity: '1'
+    },250);
+    indicatorTop.delay(250).animate({
+        opacity: '0'
+    },250);
+}
+
+function indicatorRightDisplay() {
+   
+    indicatorRight.animate({
+        opacity: '1'
+    },250);
+    indicatorRight.delay(250).animate({
+        opacity: '0'
+    },250);
+}
+
+function indicatorBottomDisplay() {
+    
+    indicatorBottom.animate({
+        opacity: '1'
+    },250);
+    indicatorBottom.delay(250).animate({
+        opacity: '0'
+    },250);
+}
+
+function indicatorLeftDisplay() {
+  
+    indicatorLeft.animate({
+        opacity: '1'
+    },250);
+    indicatorLeft.delay(250).animate({
+        opacity: '0'
+    },250);
+}
+
+
+
+
 
 //==================Sounds====================
-
 
 function redAlertSoundRepeat() {
     redAlertSound.play();
@@ -609,6 +585,8 @@ function startupSounds() {
 
 
 
+
+
 // ==================Listeners==================
 
 readyYes.click(function(event) {
@@ -620,6 +598,8 @@ readyYes.click(function(event) {
         nextRound();
     }, 5000);
 });
+
+
 
 
 
