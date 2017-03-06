@@ -2,14 +2,16 @@
 
 <html>
     <head>
-        <title>Simple Simon</title>
+        <title>Modulate the Shields!</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="/css/simon.css">
     </head>
     <body>
         <div class="container">
+            <!-- DATA DIV (UPPER) -->
             <div id="data">
                 <h1 id="shieldTitle">METAPHASIC SHIELD PROGRAM 01</h1>
+
                 <!-- Outputs random numbers for visual effect -->
                 <table class="dataOutput">
                     <tr id="firstLine">
@@ -147,9 +149,7 @@
                     </tr>
                 </table>
 
-
-                <div class="realitive purple fade" id="topLeftBox">
-                <span id="topLeftBoxText">LCARS 40277</span></div>
+                <div class="realitive purple fade" id="topLeftBox"><span id="topLeftBoxText">LCARS 40277</span></div>
                 <div class="realitive fade">
                     <!-- Hook here -->
                     <div id="topLeftHookDiv">
@@ -164,6 +164,8 @@
                     <div class="brown redAlert" id="topFinalBox"></div>
                 </div>
             </div>
+
+            <!-- GAME DIV (LOWER) -->
             <div id="game">
                 <!-- Ask user if ready -->
                 <div id="promptReady">
@@ -178,8 +180,8 @@
                 <div><img id="indicatorLeft" src="/img/indicatorLeft.png"></div> 
                 <div><img id="indicatorRight" src="/img/indicatorRight.png"></div> 
 
+                <!-- hook here -->
                 <div class="realitive fade">
-                    <!-- hook here -->
                     <div id="midHookDiv">
                         <img class="midHook" id="midHook" src="/img/hookTop.png">
                         <img class="midHook" id="midHookRed" src="/img/hookTopRed.png">
@@ -191,16 +193,14 @@
                     <div class="pink redAlert" id="botLongBox"></div>
                     <div class="mustard redAlert" id="botFinalBox"></div>
                 </div>
+
                 <div class="realitive mustard fade" id="midLeftBox"><span id="midLeftText">03-274823</span></div>
                 <div class="realitive purple fade" id="midLeftBoxSm"><span id="midLeftBoxSmText">03-274823</span></div>
                 <div class="realitive mustard fade" id="botLeftBox"><span id="botLeftBoxText">03-274823</span></div>
-                
-                
             </div>
-            
-
-
         </div>
+
+        <!-- Load Scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="/js/simon.min.js"></script>
     </body>

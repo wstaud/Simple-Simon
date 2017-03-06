@@ -1,3 +1,4 @@
+/* Load Fonts */
 @font-face {
     font-family: starTrek;
     src: url('/resources/st.ttf');
@@ -12,6 +13,7 @@ html {
     font-family: 'starTrek';
 }
 
+/* ==Lock Page Aspect== */
 
 .container {
     width: 1200px;
@@ -19,15 +21,13 @@ html {
     margin: 0 auto;
     opacity: 1;
 }
-
 .realitive {
     position: relative;
 }
 
-
+/* ==Background color classes== */
 .purple {
-    background: #9999FF;
-    
+    background: #9999FF;   
 }
 
 .mustard {
@@ -42,6 +42,7 @@ html {
     background: #FF9966;
 }
 
+/* Scrolling Random Numbers List */
 .dataOutput {
     width: 1059px;
     color: #9999CC;
@@ -51,9 +52,9 @@ html {
     font-size: 19px;
     text-align: right;
     border-spacing: 0px;
-
 }
 
+/* Prompt Button --Future proof */
 .readyButton {
     margin-top: 60px;
     border-radius: 15px;
@@ -64,7 +65,7 @@ html {
     padding-left: 40px;
     padding-right: 40px; 
 }
-
+/* ==DIV ID Styling== */
 #data {
     position: relative;
     height: 268px;
@@ -76,7 +77,6 @@ html {
 }
 
 /* LCARS Title */
-
 #shieldTitle {
     color: #9999CC;
     position: absolute;
@@ -87,15 +87,13 @@ html {
     opacity: 0;
 }
 
+/* ==LCARS Layout Styling== */
 
-
-/* Layout Styling */
 #topLeftBox {
     width: 150px;
     height: 120px;
     opacity: 0;
 }
-
 
 /* Hooks Below */
 .topLeftHook {
@@ -132,8 +130,8 @@ html {
     display: none;
 
 }
-
 /* End Hooks */
+
 #midLeftBox {
     width: 150px;
     height: 180px;   
@@ -229,7 +227,7 @@ html {
 
 
 
-/* LCARS Text styling */
+/* ==LCARS Text styling== */
 #topLeftBoxText {
     position: absolute;
     right: 10px;
@@ -267,7 +265,7 @@ html {
     top: 4px;
 }
 
-/* Data Output IDs*/
+/* Data Output Table IDs */
 
 #firstLine {
     top: 88px;
@@ -306,6 +304,7 @@ html {
     top: 190px;
     opacity: 0;
 }
+
 /*Shields*/
 #voyagerShields {
     position: absolute;
@@ -314,6 +313,7 @@ html {
     top: 100px;
     opacity: 0;
 }
+
 /*Damage Indicators*/
 #indicatorTop {
     position: absolute;
@@ -382,15 +382,5 @@ html {
 #readyNo:hover {
     background: #FF9900; 
 }
-
-
-
-
-
-
-
-
-
-
 
 
