@@ -85,7 +85,9 @@ var midHookWhite = $("#midHookWhite");
 var midHookClass = $(".midHook");
 var topLeftHookClass = $(".topLeftHook");
 
+//Text
 var incomingText = $("#incoming");
+var counterText = $("#midHookText");
 
 //Buttons
 var skipBtn = $("#skipBtn");
@@ -182,6 +184,7 @@ function checkInput() {
     if (userInputArray[userCount] == quadrantArray[userCount]) {
         userCount += 1;
         if (userCount == quadrantArray.length) {
+            counterText.html("Hits Absorbed: " + userCount);
             nextRound();
         }
     }else {
@@ -725,6 +728,10 @@ function startupSounds() {
 // ==================Listeners==================
 
 readyYes.click(function(event) {
+    counterText.css({
+        left: '7px'
+    });
+    counterText.html("Hits Absorbed: " + userCount);
     if (retry == true) {
         quadrantArray = [];
         startup();
