@@ -1,3 +1,6 @@
+$(document).ready (function() {
+    "use strict";
+
 //    ===========Sound Variables==============
 var voyagerBridge = new Audio("/sounds/voyagerBridge.mp3");
 var redAlertSound = new Audio("/sounds/redAlert4.mp3");
@@ -8,11 +11,21 @@ var computerPowerup = new Audio("/sounds/computerPowerup.mp3");
 var computerPowerup2 = new Audio("/sounds/computerPowerup2.mp3");
 var computerDamage = new Audio("/sounds/computerDamage.mp3");
 var alert = new Audio("/sounds/alert.mp3");
+var borg = new Audio("/sounds/borg.mp3");
+var futile = new Audio("/sounds/futile.mp3");
+var powerDown = new Audio("/sounds/powerDown.mp3");
+var powerHold = new Audio("/sounds/powerHold.mp3");
+var warpcoreCollapse = new Audio("/sounds/warpcoreCollapse.mp3");
+var incoming = new Audio("/sounds/incoming.mp3");
+var redAlertSoundTimeout;
+var redAlertTimeout;
 //Sound Volume
 computerDamage.volume = 0.1;
+incoming.volume = 0.5;
 
 
 // ============HTML Variables=================
+var container = $(".container");
 //DATA DIV
 var shieldTitle = $("#shieldTitle");
 var topLeftBox = $("#topLeftBox"); 
@@ -22,7 +35,7 @@ var topLongBox = $("#topLongBox");
 var topFinalBox = $("#topFinalBox");
 
 //GAME DIV
-var botFinalBox =$("#botFinalBox");
+var botFinalBox = $("#botFinalBox");
 var botLongBox = $("#botLongBox");
 var thinBox = $("#thinBox"); 
 var midHookMiniBox = $("#midHookMiniBox"); 
@@ -70,10 +83,21 @@ var topLeftHookClass = $(".topLeftHook");
 
 
 
+
+
+
+
+
+
+
+
+
+
 // =======================GAME LOGIC========================
 var quadrantArray = [];
 var userInputArray = [];
 var userCount = 0;
+
 function game() {
     userCount = 0;
     userInputArray = [];
@@ -274,7 +298,8 @@ function redAlert() {
     setTimeout(function() { 
         topFinalBox.css({background: 'red'}); 
     }, 1400);
-    setTimeout(redAlert, 2000);
+    redAlertTimeout = setTimeout(redAlert, 2000);
+    redAlertTimeout;
 }
 
 
@@ -321,9 +346,129 @@ function indicatorLeftDisplay() {
     },250);
 }
 
-
+// ========================== SHUTDOWN Animation ============================
 function shutdown() {
+    clearTimeout(redAlertSoundTimeout);
+    clearTimeout(redAlertTimeout);
+    //title
+    shieldTitle.animate({
+        opacity: '0'
+    },2000);
 
+    firstLine.delay(1000).animate({
+        opacity: '0'
+    },200);
+    secondLine.delay(1200).animate({
+        opacity: '0'
+    },200);
+    thirdLine.delay(1400).animate({
+        opacity: '0'
+    },200);
+    fourthLine.delay(1600).animate({
+        opacity: '0'
+    },200);
+    fifthLine.delay(1800).animate({
+        opacity: '0'
+    },200);
+    sixthLine.delay(2000).animate({
+        opacity: '0'
+    },200);
+    seventhLine.delay(2200).animate({
+        opacity: '0'
+    },200);
+
+    botFinalBox.delay(2400).animate({
+        opacity: '0'
+    },500);
+    topFinalBox.delay(2400).animate({
+        opacity: '0'
+    },500);
+
+    topLongBox.delay(2900).animate({
+        opacity: '0'
+    },500);
+    botLongBox.delay(2900).animate({
+        opacity: '0'
+    },500);
+
+    topShortBox.delay(3400).animate({
+        opacity: '0'
+    },500);
+    thinBox.delay(3400).animate({
+        opacity: '0'
+    },500);
+
+    topShortBox.delay(3900).animate({
+        opacity: '0'
+    },500);
+    thinBox.delay(3900).animate({
+        opacity: '0'
+    },500);
+
+    leftHookMiniBox.delay(4400).animate({
+        opacity: '0'
+    },500);
+    midHookMiniBox.delay(4400).animate({
+        opacity: '0'
+    },500);
+
+    midLeftBox.delay(4900).animate({
+        opacity: '0'
+    },500);
+    midHook.delay(4900).animate({
+        opacity: '0'
+    },500);
+    midHookRed.delay(4900).animate({
+        opacity: '0'
+    },500);
+    midHookWhite.delay(4900).animate({
+        opacity: '0'
+    },500);
+
+    topLeftHook.delay(5400).animate({
+        opacity: '0'
+    },500);
+    topLeftHookRed.delay(5400).animate({
+        opacity: '0'
+    },500);
+    topLeftHookWhite.delay(5400).animate({
+        opacity: '0'
+    },500);
+
+    midLeftBoxSm.delay(5400).animate({
+        opacity: '0'
+    },500);
+
+    topLeftBox.delay(5900).animate({
+        opacity: '0' 
+    },500);
+    botLeftBox.delay(5900).animate({
+        opacity: '0'
+        
+    },500);
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
 }
 
 
@@ -446,20 +591,33 @@ function startup() {
 
     //END STARTUP
     //Prompt Ready, launch effects and game on ready
-    readyPrompt.delay(8000).animate({
+
+    setTimeout(function() { 
+        incoming.play();
+    }, 8000);
+    setTimeout(function() { 
+        borg.play();
+    }, 10000);
+
+    readyPrompt.delay(26000).animate({
         opacity: '1'
     },1000);
+
 }
+
+
 
 
 
 
 //==================Sounds====================
 
+
 function redAlertSoundRepeat() {
-    var x = 10;
     redAlertSound.play();
-    setTimeout(redAlertSoundRepeat, 10000);
+    redAlertSoundTimeout = setTimeout(redAlertSoundRepeat, 10000);
+    redAlertSoundTimeout;
+    
 }
 
 function startupSounds() {
@@ -487,3 +645,5 @@ readyYes.click(function(event) {
 //============On page Load=============
 //run startup function to load elements
 startup();
+
+});
