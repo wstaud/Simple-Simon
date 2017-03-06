@@ -120,6 +120,7 @@ function animateShield() {
     }
 }
 
+
 //takes input of user and checks it
 $(document).keyup(function(event){
     var keycode = event.keyCode;
@@ -322,7 +323,7 @@ function indicatorLeftDisplay() {
 
 
 function shutdown() {
-    
+
 }
 
 
