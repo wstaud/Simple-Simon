@@ -75,16 +75,18 @@ var quadrantArray = [];
 var userInputArray = [];
 var userCount = 0;
 function game() {
-    nextRound();
-    animateShieldLoop();
-    usercount = 0;
+    userCount = 0;
     userInputArray = [];
+    nextRound();
+    
 }
 
 //Adds new number to quadrantArray
 function nextRound() {
     var quadrant = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
     quadrantArray.push(quadrant);
+    console.log(quadrantArray);
+    animateShieldLoop();
 }
 //Animates each of the shield indicators
 var i = 0;
@@ -95,6 +97,8 @@ function animateShieldLoop() {
 
         if (i <= quadrantArray.length) {
             animateShieldLoop();
+        }else {
+            i = 0;
         }
     }, 700);
 }
@@ -104,19 +108,15 @@ function animateShield() {
     if (quadrantArray[i] == 1) {
         alert.play();
         indicatorTopDisplay();
-        console.log("1");
     }else if (quadrantArray[i] == 2) {
         alert.play();
         indicatorRightDisplay();
-        console.log("2");
     }else if (quadrantArray[i] == 3) {
         alert.play();
         indicatorBottomDisplay();
-        console.log("3");
     }else if (quadrantArray[i] == 4) {
         alert.play();
         indicatorLeftDisplay();
-        console.log("4");
     }
 }
 
@@ -136,29 +136,28 @@ $(document).keyup(function(event){
         userInputArray.push(2);
         checkInput();
     }
-    console.log(userInputArray);
 });
 
 //checks user input
 function checkInput() {
-    if (userInputArray[userCount] = quadrantArray[userCount]) {
-        console.log("Correct");
+    console.log(userInputArray);
+    if (userInputArray[userCount] == quadrantArray[userCount]) {
         userCount += 1;
+        console.log(userCount);
         if (userCount == quadrantArray.length) {
-            console.log(userInputArray);
-            console.log("Redo");
             game();
         }
     }else {
         fail();
     }
-
-    
 }
 
 function fail() {
-    console.log("fail");
+    console.log("You Failed");
+    shutdown();
 }
+
+
 
 
 
@@ -319,6 +318,11 @@ function indicatorLeftDisplay() {
     indicatorLeft.delay(250).animate({
         opacity: '0'
     },250);
+}
+
+
+function shutdown() {
+    
 }
 
 
