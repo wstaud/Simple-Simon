@@ -346,6 +346,12 @@ function shutdown() {
     numberAbsoluteClass.animate({
         opacity: '0'
     },2000);
+    shields.animate({
+        opacity: '0'
+    },2000);
+    voyager.animate({
+        opacity: '0'
+    },3000);
     //title
     shieldTitle.animate({
         opacity: '0'
@@ -440,17 +446,12 @@ function shutdown() {
     botLeftBox.delay(5900).animate({
         opacity: '0' 
     },500);
-    shields.delay(6400).animate({
-        opacity: '0'
-    },2000);
-    voyager.delay(7400).animate({
-        opacity: '0'
-    },3000);
+    
 
     setTimeout(function() { 
         readyPrompt.css({
         display: 'block'});
-    }, 9400);
+    }, 7000);
 }
 
 
