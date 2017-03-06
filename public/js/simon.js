@@ -1,7 +1,7 @@
 $(document).ready (function() {
     "use strict";
 
-//    ===========Sound Variables==============
+//    =========== Sound Variables ==============
 var voyagerBridge = new Audio("/sounds/voyagerBridge.mp3");
 var redAlertSound = new Audio("/sounds/redAlert4.mp3");
 var computerActivate = new Audio("/sounds/computerActivate.mp3");
@@ -17,8 +17,6 @@ var powerDown = new Audio("/sounds/powerDown.mp3");
 var powerHold = new Audio("/sounds/powerHold.mp3");
 var warpcoreCollapse = new Audio("/sounds/warpcoreCollapse.mp3");
 var incoming = new Audio("/sounds/incoming.mp3");
-var redAlertSoundTimeout;
-var redAlertTimeout;
 //Sound Volume
 computerDamage.volume = 0.1;
 incoming.volume = 0.5;
@@ -78,8 +76,14 @@ var midHookWhite = $("#midHookWhite");
 var midHookClass = $(".midHook");
 var topLeftHookClass = $(".topLeftHook");
 
+// =============== Timeout variables ===============
+//declared as such to prevent automatic play
+var redAlertSoundTimeout;
+var redAlertTimeout;
 
 
+
+//=============   END Variables  ===============
 
 
 
@@ -98,15 +102,10 @@ var quadrantArray = [];
 var userInputArray = [];
 var userCount = 0;
 
-function game() {
-    userCount = 0;
-    userInputArray = [];
-    nextRound();
-    
-}
-
 //Adds new number to quadrantArray
 function nextRound() {
+    userCount = 0;
+    userInputArray = [];
     var quadrant = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
     quadrantArray.push(quadrant);
     console.log(quadrantArray);
@@ -170,7 +169,7 @@ function checkInput() {
         userCount += 1;
         console.log(userCount);
         if (userCount == quadrantArray.length) {
-            game();
+            nextRound();
         }
     }else {
         fail();
@@ -187,7 +186,7 @@ function fail() {
 
 
 
-// ==========================REACTIVE ANIMATIONS========================
+// ========================== REACTIVE ANIMATIONS ========================
 var isFirst = false;
 function redAlert() {
     //Set All Red
@@ -346,135 +345,12 @@ function indicatorLeftDisplay() {
     },250);
 }
 
-// ========================== SHUTDOWN Animation ============================
-function shutdown() {
-    clearTimeout(redAlertSoundTimeout);
-    clearTimeout(redAlertTimeout);
-    //title
-    shieldTitle.animate({
-        opacity: '0'
-    },2000);
-
-    firstLine.delay(1000).animate({
-        opacity: '0'
-    },200);
-    secondLine.delay(1200).animate({
-        opacity: '0'
-    },200);
-    thirdLine.delay(1400).animate({
-        opacity: '0'
-    },200);
-    fourthLine.delay(1600).animate({
-        opacity: '0'
-    },200);
-    fifthLine.delay(1800).animate({
-        opacity: '0'
-    },200);
-    sixthLine.delay(2000).animate({
-        opacity: '0'
-    },200);
-    seventhLine.delay(2200).animate({
-        opacity: '0'
-    },200);
-
-    botFinalBox.delay(2400).animate({
-        opacity: '0'
-    },500);
-    topFinalBox.delay(2400).animate({
-        opacity: '0'
-    },500);
-
-    topLongBox.delay(2900).animate({
-        opacity: '0'
-    },500);
-    botLongBox.delay(2900).animate({
-        opacity: '0'
-    },500);
-
-    topShortBox.delay(3400).animate({
-        opacity: '0'
-    },500);
-    thinBox.delay(3400).animate({
-        opacity: '0'
-    },500);
-
-    topShortBox.delay(3900).animate({
-        opacity: '0'
-    },500);
-    thinBox.delay(3900).animate({
-        opacity: '0'
-    },500);
-
-    leftHookMiniBox.delay(4400).animate({
-        opacity: '0'
-    },500);
-    midHookMiniBox.delay(4400).animate({
-        opacity: '0'
-    },500);
-
-    midLeftBox.delay(4900).animate({
-        opacity: '0'
-    },500);
-    midHook.delay(4900).animate({
-        opacity: '0'
-    },500);
-    midHookRed.delay(4900).animate({
-        opacity: '0'
-    },500);
-    midHookWhite.delay(4900).animate({
-        opacity: '0'
-    },500);
-
-    topLeftHook.delay(5400).animate({
-        opacity: '0'
-    },500);
-    topLeftHookRed.delay(5400).animate({
-        opacity: '0'
-    },500);
-    topLeftHookWhite.delay(5400).animate({
-        opacity: '0'
-    },500);
-
-    midLeftBoxSm.delay(5400).animate({
-        opacity: '0'
-    },500);
-
-    topLeftBox.delay(5900).animate({
-        opacity: '0' 
-    },500);
-    botLeftBox.delay(5900).animate({
-        opacity: '0'
-        
-    },500);
 
 
 
 
 
-    
-    
-    
-    
-    
-    
-    
-  
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-}
-
-
-
-
-//===================General Animations===================
+//=================== General Animations (Startup, shutdown) ===================
 
 // ====================Start Up=================
 function startup() {
@@ -607,6 +483,111 @@ function startup() {
 
 
 
+// ========================== SHUTDOWN Animation ============================
+function shutdown() {
+    clearTimeout(redAlertSoundTimeout);
+    clearTimeout(redAlertTimeout);
+    //title
+    shieldTitle.animate({
+        opacity: '0'
+    },2000);
+
+    firstLine.delay(1000).animate({
+        opacity: '0'
+    },200);
+    secondLine.delay(1200).animate({
+        opacity: '0'
+    },200);
+    thirdLine.delay(1400).animate({
+        opacity: '0'
+    },200);
+    fourthLine.delay(1600).animate({
+        opacity: '0'
+    },200);
+    fifthLine.delay(1800).animate({
+        opacity: '0'
+    },200);
+    sixthLine.delay(2000).animate({
+        opacity: '0'
+    },200);
+    seventhLine.delay(2200).animate({
+        opacity: '0'
+    },200);
+
+    botFinalBox.delay(2400).animate({
+        opacity: '0'
+    },500);
+    topFinalBox.delay(2400).animate({
+        opacity: '0'
+    },500);
+
+    topLongBox.delay(2900).animate({
+        opacity: '0'
+    },500);
+    botLongBox.delay(2900).animate({
+        opacity: '0'
+    },500);
+
+    topShortBox.delay(3400).animate({
+        opacity: '0'
+    },500);
+    thinBox.delay(3400).animate({
+        opacity: '0'
+    },500);
+
+    topShortBox.delay(3900).animate({
+        opacity: '0'
+    },500);
+    thinBox.delay(3900).animate({
+        opacity: '0'
+    },500);
+
+    leftHookMiniBox.delay(4400).animate({
+        opacity: '0'
+    },500);
+    midHookMiniBox.delay(4400).animate({
+        opacity: '0'
+    },500);
+
+    midLeftBox.delay(4900).animate({
+        opacity: '0'
+    },500);
+    midHook.delay(4900).animate({
+        opacity: '0'
+    },500);
+    midHookRed.delay(4900).animate({
+        opacity: '0'
+    },500);
+    midHookWhite.delay(4900).animate({
+        opacity: '0'
+    },500);
+
+    topLeftHook.delay(5400).animate({
+        opacity: '0'
+    },500);
+    topLeftHookRed.delay(5400).animate({
+        opacity: '0'
+    },500);
+    topLeftHookWhite.delay(5400).animate({
+        opacity: '0'
+    },500);
+
+    midLeftBoxSm.delay(5400).animate({
+        opacity: '0'
+    },500);
+
+    topLeftBox.delay(5900).animate({
+        opacity: '0' 
+    },500);
+    botLeftBox.delay(5900).animate({
+        opacity: '0'
+        
+    },500);
+    
+}
+
+
+
 
 
 
@@ -636,7 +617,7 @@ readyYes.click(function(event) {
     redAlert();
     redAlertSoundRepeat();
     setTimeout(function() { 
-        game();
+        nextRound();
     }, 5000);
 });
 
