@@ -1,6 +1,9 @@
 $(document).ready (function() {
     "use strict";
 
+
+var keyboardUnlocked = false;
+
 //    =========== Sound Variables ==============
 var voyagerBridge = new Audio("/sounds/voyagerBridge.mp3");
 var redAlertSound = new Audio("/sounds/redAlert4.mp3");
@@ -147,25 +150,28 @@ function animateShield() {
     }
 }
 //Takes user input and adds it to userInputArray, calls checkInput to verify
+
 $(document).keyup(function(event){
     var keycode = event.keyCode;
-    if (keycode == 38) {                //Up key
-        userInputArray.push(1);
-        leftBarAnimation();
+    if (keyboardUnlocked == true) {
+        if (keycode == 38) {                //Up key
+            userInputArray.push(1);
+            leftBarAnimation();
+            checkInput();
+        }else if (keycode == 40) {          //Down Key
+            userInputArray.push(3);
+            rightBarAnimation();
+            checkInput();
+        }else if (keycode == 37) {          //Left Key
+            userInputArray.push(4);
+            backBarAnimation();
+            checkInput();
+        }else if (keycode == 39) {          //Right Key
+            userInputArray.push(2);
+            frontBarAnimation();
         checkInput();
-    }else if (keycode == 40) {          //Down Key
-        userInputArray.push(3);
-        rightBarAnimation();
-        checkInput();
-    }else if (keycode == 37) {          //Left Key
-        userInputArray.push(4);
-        backBarAnimation();
-        checkInput();
-    }else if (keycode == 39) {          //Right Key
-        userInputArray.push(2);
-        frontBarAnimation();
-        checkInput();
-    }
+        }
+    }  
 });
 //checks user input against generated sequence, calls next round if all is good or calls fail function otherwise
 function checkInput() {
@@ -692,6 +698,7 @@ readyYes.click(function(event) {
             }, 5000);
         }, 5000);
     } else {
+        keyboardUnlocked = true;
         readyPrompt.css({
             display: 'none'});
         redAlert();
