@@ -20,6 +20,7 @@ var incoming = new Audio("/sounds/incoming.mp3");
 //Sound Volume
 computerDamage.volume = 0.1;
 incoming.volume = 0.5;
+borg.volume = 0.5;
 
 // ============HTML Variables=================
 var container = $(".container");
@@ -64,6 +65,7 @@ var purple = $(".purple");
 var mustard = $(".mustard");
 var pink = $(".pink");
 var brown = $(".brown");
+var readyText = $("#readyText");
 
 //hooks
 var topLeftHook = $("#topLeftHook"); 
@@ -79,6 +81,10 @@ var topLeftHookClass = $(".topLeftHook");
 //declared as such to prevent automatic play
 var redAlertSoundTimeout;
 var redAlertTimeout;
+
+// ================ Booleans ==============
+var retry = false;
+
 //=============   END Variables  ===============
 
 
@@ -167,6 +173,10 @@ function fail() {
 
 
 //=================== General Animations (Startup, shutdown) ===================
+
+
+
+
 
 // ====================Start Up=================
 function startup() {
@@ -283,17 +293,25 @@ function startup() {
     //END STARTUP Animation
 
     //Prompt Ready, launch effects and game on ready
-    setTimeout(function() { 
-        incoming.play();
-    }, 8000);
+    if (retry == false) {
+        setTimeout(function() { 
+            transmission();
+        }, 8000);
+    }
+}
+
+
+
+
+//Called upon only on the first playthrough
+function transmission() {
+    incoming.play();
     setTimeout(function() { 
         borg.play();
-    }, 10000);
-
-    readyPrompt.delay(26000).animate({
+    }, 2000);
+    readyPrompt.delay(18000).animate({
         opacity: '1'
     },1000);
-
 }
 
 
@@ -302,8 +320,10 @@ function startup() {
 
 // ========================== SHUTDOWN Animation ============================
 function shutdown() {
+    retry = true;
     clearTimeout(redAlertSoundTimeout);
     clearTimeout(redAlertTimeout);
+    readyText.html("Would you like to try again?");
     //title
     shieldTitle.animate({
         opacity: '0'
@@ -398,6 +418,20 @@ function shutdown() {
     botLeftBox.delay(5900).animate({
         opacity: '0' 
     },500);
+    shields.delay(6400).animate({
+        opacity: '0'
+    },2000);
+    voyager.delay(7400).animate({
+        opacity: '0'
+    },3000);
+    
+    // readyPrompt.delay(6400).animate({
+    //     display: 'block'
+    // },500);
+    setTimeout(function() { 
+        readyPrompt.css({
+        display: 'block'});
+    }, 9400);
 }
 
 
@@ -590,13 +624,28 @@ function startupSounds() {
 // ==================Listeners==================
 
 readyYes.click(function(event) {
-    readyPrompt.css({
-        display: 'none'});
-    redAlert();
-    redAlertSoundRepeat();
-    setTimeout(function() { 
-        nextRound();
-    }, 5000);
+    if (retry == true) {
+        quadrantArray = [];
+        startup();
+        setTimeout(function() { 
+            readyPrompt.css({
+                display: 'none'});
+            redAlert();
+            redAlertSoundRepeat();
+            setTimeout(function() { 
+                nextRound();
+            }, 5000);
+        }, 5000);
+    } else {
+        readyPrompt.css({
+            display: 'none'});
+        redAlert();
+        redAlertSoundRepeat();
+        setTimeout(function() { 
+            nextRound();
+        }, 5000);
+    }
+    
 });
 
 

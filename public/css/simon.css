@@ -372,13 +372,8 @@ html {
 #readyYes {
     background: red;
     border: 1px;
-    margin-right: 20px;
 }
-#readyNo {
-    background: #FFCC99;
-    border: 1px;
-    margin-left: 20px;
-}
+
 #readyYes:hover {
     background: white;
     color: black;
