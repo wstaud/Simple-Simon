@@ -81,11 +81,12 @@ function game() {
     userInputArray = [];
 }
 
-
+//Adds new number to quadrantArray
 function nextRound() {
     var quadrant = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
     quadrantArray.push(quadrant);
 }
+//Animates each of the shield indicators
 var i = 0;
 function animateShieldLoop() {
     animateShield();
@@ -97,6 +98,7 @@ function animateShieldLoop() {
         }
     }, 700);
 }
+//Calls on animations of shields
 function animateShield() {
     
     if (quadrantArray[i] == 1) {
@@ -118,10 +120,9 @@ function animateShield() {
     }
 }
 
-
+//takes input of user and checks it
 $(document).keyup(function(event){
     var keycode = event.keyCode;
-
     if (keycode == 38) {                //Up key
         userInputArray.push(1);
         checkInput();
@@ -138,7 +139,7 @@ $(document).keyup(function(event){
     console.log(userInputArray);
 });
 
-
+//checks user input
 function checkInput() {
     if (userInputArray[userCount] = quadrantArray[userCount]) {
         console.log("Correct");
