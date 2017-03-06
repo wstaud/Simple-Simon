@@ -95,23 +95,25 @@ var retry = false;
 var quadrantArray = [];
 var userInputArray = [];
 var userCount = 0;
+var i = 0;
 
 //Adds new number to quadrantArray, resets user variables, calls animate shields
 function nextRound() {
     userCount = 0;
     userInputArray = [];
+    i = 0;
     var quadrant = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
     quadrantArray.push(quadrant);
     animateShieldLoop();
 }
 //Calls animateShieldLoop() to animate each of the shield indicators
-var i = 0;
+
 function animateShieldLoop() {
     animateShield();
     setTimeout(function() {
         i += 1;
 
-        if (i <= quadrantArray.length) {
+        if (i < quadrantArray.length) {
             animateShieldLoop();
         }else {
             i = 0;
@@ -120,7 +122,8 @@ function animateShieldLoop() {
 }
 //Animates shield indicators
 function animateShield() {
-    
+    console.log(quadrantArray);
+    console.log(i);
     if (quadrantArray[i] == 1) {
         alert.play();
         indicatorTopDisplay();
@@ -424,7 +427,7 @@ function shutdown() {
     voyager.delay(7400).animate({
         opacity: '0'
     },3000);
-    
+
     setTimeout(function() { 
         readyPrompt.css({
         display: 'block'});

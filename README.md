@@ -13,7 +13,7 @@
 3. Update Startup Borg function with GIF/Video of Borg.
 4. Add Volume slider.
 5. Add Skip Intro.
-6. Iron out random sequence bugs.
+6. Iron out random sequence bugs. (fixed)
 7. Animate and randomize LCARS console outputs.
 8. Animate LCARS panels.
 9. Add background damage sounds.
