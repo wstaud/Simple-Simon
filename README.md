@@ -8,12 +8,12 @@
 
 
 ### (todo)
-1. Add user input visual effects.
-2. Update Shutdown further with added style, logic, sounds and animation.
+1. (Added) Add user input visual effects.
+2. (Added) Update Shutdown further with added style, logic, sounds and animation.
 3. Update Startup Borg function with GIF/Video of Borg.
 4. Add Volume slider.
-5. Add Skip Intro.
-6. Iron out random sequence bugs. (fixed)
+5. (Added) Add Skip Intro. 
+6. (Fixed) Iron out random sequence bugs. 
 7. Animate and randomize LCARS console outputs.
 8. Animate LCARS panels.
 9. Add background damage sounds.
