@@ -425,9 +425,6 @@ function shutdown() {
         opacity: '0'
     },3000);
     
-    // readyPrompt.delay(6400).animate({
-    //     display: 'block'
-    // },500);
     setTimeout(function() { 
         readyPrompt.css({
         display: 'block'});
