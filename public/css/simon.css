@@ -65,6 +65,24 @@ html {
     padding-left: 40px;
     padding-right: 40px; 
 }
+
+.numberAbsolute {
+    opacity: 0;
+    position: absolute;
+    color: #FF9900;
+    font-size: 50px;
+}
+
+.statusBar {
+    background: #CC6666;
+    width: 50px;
+    height: 30px;
+    position: absolute;
+}
+
+
+
+
 /* ==DIV ID Styling== */
 #data {
     position: relative;
@@ -300,7 +318,7 @@ html {
 #voyager {
     position: absolute;
     width: 500px;
-    left: 540px;
+    left: 653px;
     top: 190px;
     opacity: 0;
 }
@@ -309,7 +327,7 @@ html {
 #voyagerShields {
     position: absolute;
     width: 750px;
-    left: 380px;
+    left: 480px;
     top: 100px;
     opacity: 0;
 }
@@ -318,7 +336,7 @@ html {
 #indicatorTop {
     position: absolute;
     width: 750px;
-    left: 375px;
+    left: 485px;
     top: 50px;
     opacity: 0;
 }
@@ -326,7 +344,7 @@ html {
 #indicatorBottom {
     position: absolute;
     width: 750px;
-    left: 375px;
+    left: 485px;
     top: 420px;
     opacity: 0;
 }
@@ -334,7 +352,7 @@ html {
 #indicatorLeft {
     position: absolute;
     height: 240px;
-    left: 336px;
+    left: 440px;
     top: 190px;
     opacity: 0;
 }
@@ -342,7 +360,7 @@ html {
 #indicatorRight {
     position: absolute;
     height: 240px;
-    left: 1095px;
+    left: 1198px;
     top: 190px;
     opacity: 0;
 }
@@ -381,6 +399,41 @@ html {
 
 #readyNo:hover {
     background: #FF9900; 
+}
+
+#leftNumberDivclass {
+    top: 105px;
+    left: 190px;
+}
+#rightNumberDivclass {
+    top: 153px;
+    left: 190px;
+}
+#backNumberDivclass {
+    top: 203px;
+    left: 190px;
+}
+#frontNumberDivclass {
+    top: 251px;
+    left: 190px;
+}
+
+/* Shield Status Bars */
+#leftBar {
+    top: 16px;
+    left: 63px;
+}
+#rightBar {
+    top: 15px;
+    left: 130px;
+}
+#frontBar {
+    top: 15px;
+    left: 66px;
+}
+#backBar {
+    top: 16px;
+    left: 75px;
 }
 
 

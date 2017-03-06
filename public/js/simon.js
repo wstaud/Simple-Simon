@@ -57,6 +57,12 @@ var indicatorTop = $("#indicatorTop");
 var indicatorBottom = $("#indicatorBottom");
 var indicatorRight = $("#indicatorRight");
 var indicatorLeft = $("#indicatorLeft");
+//Shield Status Bars
+var numberAbsoluteClass = $(".numberAbsolute");
+var leftBar = $("#leftBar");
+var rightBar = $("#rightBar");
+var frontBar = $("#frontBar");
+var backBar = $("#backBar");
 
 //readyPrompt
 var readyPrompt = $("#promptReady");
@@ -76,6 +82,8 @@ var midHookRed = $("#midHookRed");
 var midHookWhite = $("#midHookWhite"); 
 var midHookClass = $(".midHook");
 var topLeftHookClass = $(".topLeftHook");
+
+
 
 // =============== Timeout variables ===============
 //declared as such to prevent automatic play
@@ -143,15 +151,19 @@ $(document).keyup(function(event){
     var keycode = event.keyCode;
     if (keycode == 38) {                //Up key
         userInputArray.push(1);
+        leftBarAnimation();
         checkInput();
     }else if (keycode == 40) {          //Down Key
         userInputArray.push(3);
+        rightBarAnimation();
         checkInput();
     }else if (keycode == 37) {          //Left Key
         userInputArray.push(4);
+        backBarAnimation();
         checkInput();
     }else if (keycode == 39) {          //Right Key
         userInputArray.push(2);
+        frontBarAnimation();
         checkInput();
     }
 });
@@ -293,6 +305,10 @@ function startup() {
     shields.delay(6000).animate({
         opacity: '1'
     },2000);
+    numberAbsoluteClass.delay(6000).animate({
+        opacity: '1'
+    },2000);
+    
     //END STARTUP Animation
 
     //Prompt Ready, launch effects and game on ready
@@ -326,7 +342,10 @@ function shutdown() {
     retry = true;
     clearTimeout(redAlertSoundTimeout);
     clearTimeout(redAlertTimeout);
-    readyText.html("Would you like to try again?");
+    readyText.html("You have been assimilated. Try again?");
+    numberAbsoluteClass.animate({
+        opacity: '0'
+    },2000);
     //title
     shieldTitle.animate({
         opacity: '0'
@@ -598,6 +617,41 @@ function indicatorLeftDisplay() {
     },250);
 }
 
+
+// User Input Shield Status Bars
+
+function leftBarAnimation() {
+    leftBar.animate({
+        width: '+=50px'
+    },250);
+    leftBar.delay(250).animate({
+        width: '-=50px'
+    },250);
+}
+function rightBarAnimation() {
+    rightBar.animate({
+        width: '+=50px'
+    },250);
+    rightBar.delay(250).animate({
+        width: '-=50px'
+    },250);
+}
+function frontBarAnimation() {
+    frontBar.animate({
+        width: '+=50px'
+    },250);
+    frontBar.delay(250).animate({
+        width: '-=50px'
+    },250);
+}
+function backBarAnimation() {
+    backBar.animate({
+        width: '+=50px'
+    },250);
+    backBar.delay(250).animate({
+        width: '-=50px'
+    },250);
+}
 
 
 
