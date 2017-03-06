@@ -23,7 +23,7 @@ var incoming = new Audio("/sounds/incoming.mp3");
 //Sound Volume
 computerDamage.volume = 0.1;
 incoming.volume = 0.5;
-borg.volume = 0.5;
+borg.volume = 1;
 
 // ============HTML Variables=================
 var container = $(".container");
@@ -139,8 +139,6 @@ function animateShieldLoop() {
 }
 //Animates shield indicators
 function animateShield() {
-    console.log(quadrantArray);
-    console.log(i);
     if (quadrantArray[i] == 1) {
         alert.play();
         indicatorTopDisplay();
@@ -193,6 +191,9 @@ function checkInput() {
 }
 //Calls shutdown function. Will add more
 function fail() {
+    retry = true;
+    clearTimeout(redAlertSoundTimeout);
+    clearTimeout(redAlertTimeout);
     shutdown();
 }
 
@@ -386,9 +387,6 @@ function transmission() {
 
 // ========================== SHUTDOWN Animation ============================
 function shutdown() {
-    retry = true;
-    clearTimeout(redAlertSoundTimeout);
-    clearTimeout(redAlertTimeout);
     readyText.html("You have been assimilated. Try again?");
     powerHold.play();
     numberAbsoluteClass.animate({
@@ -735,15 +733,13 @@ readyYes.click(function(event) {
     if (retry == true) {
         quadrantArray = [];
         startup();
-        setTimeout(function() { 
-            readyPrompt.css({
+        redAlert();
+        redAlertSoundRepeat();
+        readyPrompt.css({
                 display: 'none'});
-            redAlert();
-            redAlertSoundRepeat();
-            setTimeout(function() { 
-                nextRound();
-            }, 5000);
-        }, 5000);
+        setTimeout(function() { 
+            nextRound();
+        }, 7000);
     } else {
         keyboardUnlocked = true;
         readyPrompt.css({
