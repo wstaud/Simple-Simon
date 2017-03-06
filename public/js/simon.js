@@ -69,7 +69,6 @@ var backBar = $("#backBar");
 
 //readyPrompt
 var readyPrompt = $("#promptReady");
-var readyYes = $("#readyYes");
 var purple = $(".purple");
 var mustard = $(".mustard");
 var pink = $(".pink");
@@ -87,6 +86,10 @@ var midHookClass = $(".midHook");
 var topLeftHookClass = $(".topLeftHook");
 
 var incomingText = $("#incoming");
+
+//Buttons
+var skipBtn = $("#skipBtn");
+var readyYes = $("#readyYes");
 
 // =============== Timeout variables ===============
 //declared as such to prevent automatic play
@@ -337,6 +340,9 @@ function transmission() {
     incomingText.css({
         display: 'block'
     });
+    skipBtn.css({
+        display: 'block'
+    });
     incomingText.animate({
         opacity: '1'
     },1000);
@@ -355,13 +361,17 @@ function transmission() {
     incomingText.delay(2500).animate({
         opacity: '0'
     },1000);
-    incomingText.css({
-        display: 'none'
-    });
-    
     setTimeout(function() { 
         borg.play();
     }, 2000);
+    setTimeout(function() { 
+        incomingText.css({
+            display: 'none'
+        });
+        skipBtn.css({
+            display: 'none'
+        });
+    }, 18000);
     readyPrompt.delay(18000).animate({
         opacity: '1'
     },1000);
@@ -377,6 +387,7 @@ function shutdown() {
     clearTimeout(redAlertSoundTimeout);
     clearTimeout(redAlertTimeout);
     readyText.html("You have been assimilated. Try again?");
+    powerHold.play();
     numberAbsoluteClass.animate({
         opacity: '0'
     },2000);
@@ -483,6 +494,7 @@ function shutdown() {
     
 
     setTimeout(function() { 
+        powerDown.play();
         readyPrompt.css({
         display: 'block'});
     }, 7000);
@@ -738,6 +750,19 @@ readyYes.click(function(event) {
     
 });
 
+skipBtn.click(function(event) {
+    borg.volume = 0;
+    readyPrompt.css({
+        opacity: '1'
+    });
+    incomingText.css({
+        display: 'none'
+    });
+    skipBtn.css({
+        display: 'none'
+    });
+    
+});
 
 
 

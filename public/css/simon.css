@@ -448,3 +448,13 @@ html {
     color: red;
 }
 
+#skipBtn {
+    display: none;
+    position: absolute;
+    left: 180px;
+    bottom: -380px;
+    background: red;
+    border: 0;
+    z-index: 500;
+}
+
