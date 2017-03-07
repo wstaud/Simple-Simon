@@ -436,6 +436,7 @@ html {
     left: 75px;
 }
 
+/* Massive INCOMING TRANSMISSION LCARS warning */
 #incoming {
     display: none;
     opacity: 0;
@@ -448,6 +449,7 @@ html {
     color: red;
 }
 
+/* Skip Button Styling */
 #skipBtn {
     display: none;
     position: absolute;

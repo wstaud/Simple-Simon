@@ -20,6 +20,7 @@ var powerDown = new Audio("/sounds/powerDown.mp3");
 var powerHold = new Audio("/sounds/powerHold.mp3");
 var warpcoreCollapse = new Audio("/sounds/warpcoreCollapse.mp3");
 var incoming = new Audio("/sounds/incoming.mp3");
+
 //Sound Volume
 computerDamage.volume = 0.1;
 incoming.volume = 0.5;
@@ -114,6 +115,7 @@ var userInputArray = [];
 var userCount = 0;
 var i = 0;
 
+//When called, sets up next round:
 //Adds new number to quadrantArray, resets user variables, calls animate shields
 function nextRound() {
     userCount = 0;
@@ -137,7 +139,7 @@ function animateShieldLoop() {
         }
     }, 700);
 }
-//Animates shield indicators
+//Animates generated shield indicators
 function animateShield() {
     if (quadrantArray[i] == 1) {
         alert.play();
@@ -153,8 +155,8 @@ function animateShield() {
         indicatorLeftDisplay();
     }
 }
+//Log the userinput and verify against generated sequence:
 //Takes user input and adds it to userInputArray, calls checkInput to verify
-
 $(document).keyup(function(event){
     var keycode = event.keyCode;
     if (keyboardUnlocked == true) {
@@ -189,7 +191,8 @@ function checkInput() {
         fail();
     }
 }
-//Calls shutdown function. Will add more
+//Shut LCARS down and kill red alert. Ask user for retry:
+//Calls shutdown function and clears redalert timeouts
 function fail() {
     retry = true;
     clearTimeout(redAlertSoundTimeout);
@@ -201,17 +204,13 @@ function fail() {
 
 
 
-//=================== General Animations (Startup, shutdown) ===================
-
-
-
+//=================== General Animations (Startup, shutdown, etc) ===================
 
 
 // ====================Start Up=================
 function startup() {
-    //Play Computer Startup Sound
+    //Play Computer Startup Sounds
     startupSounds();
-
     //--Animation Sequence--
     //first
     topLeftBox.animate({
@@ -219,16 +218,16 @@ function startup() {
     },1000);
     botLeftBox.animate({
         opacity: '1'
-        
     },1000);
+
     //second
     topLeftHook.delay(300).animate({
         opacity: '1'
     },1000);
-
     midLeftBoxSm.delay(300).animate({
         opacity: '1'
     },1000);
+
     //third
     midLeftBox.delay(800).animate({
         opacity: '1'
@@ -236,6 +235,7 @@ function startup() {
     midHook.delay(800).animate({
         opacity: '1'
     },1000);
+
     //fourth
     leftHookMiniBox.delay(900).animate({
         opacity: '1'
@@ -243,6 +243,7 @@ function startup() {
     midHookMiniBox.delay(900).animate({
         opacity: '1'
     },1000);
+
     //fifth
     topShortBox.delay(1000).animate({
         opacity: '1'
@@ -250,6 +251,7 @@ function startup() {
     thinBox.delay(1000).animate({
         opacity: '1'
     },1000);
+
     //sixth
     topShortBox.delay(1200).animate({
         opacity: '1'
@@ -257,6 +259,7 @@ function startup() {
     thinBox.delay(1200).animate({
         opacity: '1'
     },1000);
+
     //seventh
     topLongBox.delay(1400).animate({
         opacity: '1'
@@ -264,6 +267,7 @@ function startup() {
     botLongBox.delay(1400).animate({
         opacity: '1'
     },1000);
+
     //eighth
     topFinalBox.delay(1600).animate({
         opacity: '1'
@@ -272,15 +276,16 @@ function startup() {
         opacity: '1'
     },1000);
 
-    //title
+    //ninth --title
     shieldTitle.delay(2000).animate({
         opacity: '1'
     },2000);
+    //Computer working beeps
     setTimeout(function() { 
         computerWork.play();
     }, 2000);
 
-    //Data Output Random fade in
+    //10th --Data Output Random fade in
     setTimeout(function() { 
         computerScroll.play();
     }, 4200);
@@ -306,7 +311,7 @@ function startup() {
         opacity: '1'
     },200);
 
-    //Voyager and shields
+    //11th --Voyager and shields
     setTimeout(function() { 
         computerPowerup2.play();
     }, 4900);
@@ -322,7 +327,6 @@ function startup() {
     numberAbsoluteClass.delay(6000).animate({
         opacity: '1'
     },2000);
-    
     //END STARTUP Animation
 
     //Prompt Ready, launch effects and game on ready
@@ -330,14 +334,12 @@ function startup() {
         setTimeout(function() { 
             transmission();
         }, 8000);
-
-
     }
 }
 
 
 
-
+//LCARS Incoming message and Borg warning:
 //Called upon only on the first playthrough
 function transmission() {
     incoming.play();
@@ -386,6 +388,7 @@ function transmission() {
 
 
 // ========================== SHUTDOWN Animation ============================
+//Runs reverse (quicker) sequence animations, sets new message for user ack and prompts ready function
 function shutdown() {
     readyText.html("You have been assimilated. Try again?");
     powerHold.play();
@@ -493,7 +496,6 @@ function shutdown() {
         opacity: '0' 
     },500);
     
-
     setTimeout(function() { 
         powerDown.play();
         readyPrompt.css({
@@ -506,7 +508,7 @@ function shutdown() {
 
 
 // ========================== REACTIVE ANIMATIONS ========================
-var isFirst = false;
+//Gives LCARS red alert theme
 function redAlert() {
     //Set All Red
     purple.css({background: 'red'});
@@ -623,9 +625,7 @@ function redAlert() {
 
 
 
-
-//Indicator Lights
-
+//Shield Indicator Lights 
 function indicatorTopDisplay() {
     indicatorTop.animate({
         opacity: '1'
@@ -666,8 +666,9 @@ function indicatorLeftDisplay() {
 }
 
 
-// User Input Shield Status Bars
 
+
+// User Input Shield Bars (gives LCARS remodulation effect)
 function leftBarAnimation() {
     leftBar.animate({
         width: '+=50px'
@@ -676,6 +677,7 @@ function leftBarAnimation() {
         width: '-=50px'
     },250);
 }
+
 function rightBarAnimation() {
     rightBar.animate({
         width: '+=50px'
@@ -684,6 +686,7 @@ function rightBarAnimation() {
         width: '-=50px'
     },250);
 }
+
 function frontBarAnimation() {
     frontBar.animate({
         width: '+=50px'
@@ -692,6 +695,7 @@ function frontBarAnimation() {
         width: '-=50px'
     },250);
 }
+
 function backBarAnimation() {
     backBar.animate({
         width: '+=50px'
@@ -706,6 +710,7 @@ function backBarAnimation() {
 
 //==================Sounds====================
 
+//Has global timeout that can be called in multiple functions to cancel red alert sounds
 function redAlertSoundRepeat() {
     redAlertSound.play();
     redAlertSoundTimeout = setTimeout(redAlertSoundRepeat, 10000);
@@ -713,6 +718,7 @@ function redAlertSoundRepeat() {
     
 }
 
+//Plays bridge ambaince sounds and plays a computer launching sound
 function startupSounds() {
     voyagerBridge.play();
     voyagerBridge.volume = 0.3;
@@ -725,6 +731,9 @@ function startupSounds() {
 
 // ==================Listeners==================
 
+//If user clicks proceed on prompt:
+//Will set a LCARS panel to round counter, verify if user has played through once already:
+//Ques redAlert related items, locks keyboard on first playthough
 readyYes.click(function(event) {
     counterText.css({
         left: '7px'
@@ -753,6 +762,7 @@ readyYes.click(function(event) {
     
 });
 
+//Allows user to skip borg transmission 
 skipBtn.click(function(event) {
     borg.volume = 0;
     readyPrompt.css({
@@ -763,8 +773,7 @@ skipBtn.click(function(event) {
     });
     skipBtn.css({
         display: 'none'
-    });
-    
+    }); 
 });
 
 
