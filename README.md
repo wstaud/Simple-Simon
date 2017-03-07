@@ -3,8 +3,8 @@
 ## Description:
 ### A Simple Simon Game that features Star Trek's Voyager and their encounter with the Borg. Player must input correct sequence in LCARS to remodulate shields and defend against Borg attack.
 
-[![Simple-Simon](http://i.imgur.com/wXZXULf.png)](https://github.com/xconstaud/Simple-Simon)
-[![Simple-Simon](http://i.imgur.com/rYbCUDu.png)](https://github.com/xconstaud/Simple-Simon)
+[![Simple-Simon](http://i.imgur.com/zBaiRO5.png)](https://github.com/xconstaud/Simple-Simon)
+[![Simple-Simon](http://i.imgur.com/ko3Irx3.png)](https://github.com/xconstaud/Simple-Simon)
 
 
 ### (todo)
