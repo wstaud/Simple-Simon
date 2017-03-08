@@ -3,31 +3,12 @@ $(document).ready (function() {
 
 
 
-
-//    =========== Sound Variables ==============
-var voyagerBridge = new Audio("/sounds/voyagerBridge.mp3");
-var redAlertSound = new Audio("/sounds/redAlert4.mp3");
-var computerActivate = new Audio("/sounds/computerActivate.mp3");
-var computerWork = new Audio("/sounds/computerWork.mp3");
-var computerScroll = new Audio("/sounds/computerScroll.mp3");
-var computerPowerup = new Audio("/sounds/computerPowerup.mp3");
-var computerPowerup2 = new Audio("/sounds/computerPowerup2.mp3");
-var computerDamage = new Audio("/sounds/computerDamage.mp3");
-var alert = new Audio("/sounds/alert.mp3");
-var borg = new Audio("/sounds/borg.mp3");
-var futile = new Audio("/sounds/futile.mp3");
-var powerDown = new Audio("/sounds/powerDown.mp3");
-var powerHold = new Audio("/sounds/powerHold.mp3");
-var warpcoreCollapse = new Audio("/sounds/warpcoreCollapse.mp3");
-var incoming = new Audio("/sounds/incoming.mp3");
-
-//Sound Volume
-computerDamage.volume = 0.1;
-incoming.volume = 0.5;
+//Globals
+// =========== Sound Variables =============
+var borg = new Audio("/sounds/borg.mp3"); 
 borg.volume = 1;
 
 // ============HTML Variables=================
-var container = $(".container");
 //DATA DIV
 var shieldTitle = $("#shieldTitle");
 var topLeftBox = $("#topLeftBox"); 
@@ -141,6 +122,7 @@ function animateShieldLoop() {
 }
 //Animates generated shield indicators
 function animateShield() {
+    var alert = new Audio("/sounds/alert.mp3");
     if (quadrantArray[i] == 1) {
         alert.play();
         indicatorTopDisplay();
@@ -282,11 +264,13 @@ function startup() {
     },2000);
     //Computer working beeps
     setTimeout(function() { 
+        var computerWork = new Audio("/sounds/computerWork.mp3");
         computerWork.play();
     }, 2000);
 
     //10th --Data Output Random fade in
     setTimeout(function() { 
+        var computerScroll = new Audio("/sounds/computerScroll.mp3");
         computerScroll.play();
     }, 4200);
     firstLine.delay(4200).animate({
@@ -313,12 +297,14 @@ function startup() {
 
     //11th --Voyager and shields
     setTimeout(function() { 
+        var computerPowerup2 = new Audio("/sounds/computerPowerup2.mp3");
         computerPowerup2.play();
     }, 4900);
     voyager.delay(4900).animate({
         opacity: '1'
     },3000);
     setTimeout(function() { 
+        var computerPowerup = new Audio("/sounds/computerPowerup.mp3");
         computerPowerup.play();
     }, 6000);
     shields.delay(6000).animate({
@@ -342,7 +328,10 @@ function startup() {
 //LCARS Incoming message and Borg warning:
 //Called upon only on the first playthrough
 function transmission() {
+    var incoming = new Audio("/sounds/incoming.mp3");
+    incoming.volume = 0.5;
     incoming.play();
+
     incomingText.css({
         display: 'block'
     });
@@ -390,6 +379,7 @@ function transmission() {
 // ========================== SHUTDOWN Animation ============================
 //Runs reverse (quicker) sequence animations, sets new message for user ack and prompts ready function
 function shutdown() {
+    var powerHold = new Audio("/sounds/powerHold.mp3");
     readyText.html("You have been assimilated. Try again?");
     powerHold.play();
     numberAbsoluteClass.animate({
@@ -497,6 +487,7 @@ function shutdown() {
     },500);
     
     setTimeout(function() { 
+        var powerDown = new Audio("/sounds/powerDown.mp3");
         powerDown.play();
         readyPrompt.css({
         display: 'block'});
@@ -712,6 +703,7 @@ function backBarAnimation() {
 
 //Has global timeout that can be called in multiple functions to cancel red alert sounds
 function redAlertSoundRepeat() {
+    var redAlertSound = new Audio("/sounds/redAlert4.mp3");
     redAlertSound.play();
     redAlertSoundTimeout = setTimeout(redAlertSoundRepeat, 10000);
     redAlertSoundTimeout;
@@ -720,6 +712,8 @@ function redAlertSoundRepeat() {
 
 //Plays bridge ambaince sounds and plays a computer launching sound
 function startupSounds() {
+    var voyagerBridge = new Audio("/sounds/voyagerBridge.mp3");
+    var computerActivate = new Audio("/sounds/computerActivate.mp3");
     voyagerBridge.play();
     voyagerBridge.volume = 0.3;
     computerActivate.play();
@@ -731,9 +725,9 @@ function startupSounds() {
 
 // ==================Listeners==================
 
-//If user clicks proceed on prompt:
+//If user clicks "proceed" on prompt:
 //Will set a LCARS panel to round counter, verify if user has played through once already:
-//Ques redAlert related items, locks keyboard on first playthough
+//Ques redAlert related items, locks keyboard on first playthough to prevent failing round premature.
 readyYes.click(function(event) {
     counterText.css({
         left: '7px'
@@ -762,7 +756,7 @@ readyYes.click(function(event) {
     
 });
 
-//Allows user to skip borg transmission 
+//Allows user to skip borg/intro transmission 
 skipBtn.click(function(event) {
     borg.volume = 0;
     readyPrompt.css({
@@ -775,6 +769,7 @@ skipBtn.click(function(event) {
         display: 'none'
     }); 
 });
+
 
 
 
